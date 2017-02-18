@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: ph-zull-api-gateway
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:10005/security/user
+server:
+  port: 10004
+info:
+  component: PartyHulchul Zuul API Gateway
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+zuul:
+  ignoredServices: '*'
+  prefix: /api
+  routes:
+    productapi: /product/**
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/

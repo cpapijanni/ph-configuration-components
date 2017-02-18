@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: ph-turbine-dashboard
+server:
+  port: 10003
+info:
+  component: PartyHulchul Turbine Dashboard
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+turbine:
+  app-config: ph-hystrix-dashboard, ph-eureka-server

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: ph-oauth-server
+server:
+  port: 10005
+  context-path: /uaa
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+logging:
+  level:
+    org.springframework.security: DEBUG
