@@ -14,6 +14,6 @@ spring:
           - patterns: multi-repo-demo-*
             uri: https://github.com/spring-cloud-samples/config-repo
 server:
-  port: 8888
+  port: 10006
 management:
   context_path: /admin

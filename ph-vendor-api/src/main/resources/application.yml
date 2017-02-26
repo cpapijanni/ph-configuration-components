@@ -1,3 +1,14 @@
 spring:
   application:
     name: ph-vendor-api
+
+server:
+  port: 10007
+  
+# Define the Eureka server that handles service registration
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/

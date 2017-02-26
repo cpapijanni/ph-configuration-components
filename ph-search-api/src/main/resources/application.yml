@@ -1,3 +1,14 @@
 spring:
   application:
     name: ph-search-api
+
+server:
+  port: 10008
+  
+# Define the Eureka server that handles service registration
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/

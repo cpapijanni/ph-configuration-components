@@ -1,13 +1,14 @@
 spring:
   application:
-    name: ph-zull-api-gateway
-  oauth2:
-    resource:
-      userInfoUri: http://localhost:10005/security/user
+    name: ph-zuul-api-gateway
+
+# Define the port where the API gateway server would be running
 server:
   port: 10004
+
 info:
   component: PartyHulchul Zuul API Gateway
+
 endpoints:
   restart:
     enabled: true
@@ -15,14 +16,37 @@ endpoints:
     enabled: true
   health:
     sensitive: false
+
 zuul:
-  ignoredServices: '*'
+  sensitive-headers: Authorization
   prefix: /api
   routes:
-    productapi: /product/**
+    ph-customer-api: 
+      path: /customer/**
+      strip-prefix: false
+    ph-vendor-api:
+      path: /vendor/**
+      strip-prefix: false
+    ph-search-api:
+      path: /search/**
+      strip-prefix: false
+
+# Define the Eureka server that handles service registration
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
   client:
     serviceUrl:
       defaultZone: http://localhost:10001/eureka/
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+     client:
+      accessTokenUri: http://localhost:10005/oauth/token
+      userAuthorizationUri: http://localhost:10005/oauth/authorize
+
+logging:
+  level:
+    org.springframework.security: DEBUG
