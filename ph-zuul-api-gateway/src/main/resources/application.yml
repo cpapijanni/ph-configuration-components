@@ -46,6 +46,12 @@ security:
      client:
       accessTokenUri: http://localhost:10005/oauth/token
       userAuthorizationUri: http://localhost:10005/oauth/authorize
+      clientId: test-client-id
+      clientSecret: test-client-secret
+     resource:
+      userInfoUri: http://localhost:10005/user
+      preferTokenInfo: false
+  sessions: ALWAYS
 
 logging:
   level:

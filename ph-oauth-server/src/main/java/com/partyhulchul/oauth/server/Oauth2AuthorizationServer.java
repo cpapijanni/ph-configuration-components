@@ -7,11 +7,12 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 @Configuration
 @EnableAuthorizationServer
 public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdapter {
+	
+	private static final String RESOURCE_ID = "ph-resource";
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -30,6 +31,6 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
 	         .authorizedGrantTypes("client_credentials")
 	         .authorities("ROLE_CLIENT")
 	         .scopes("read")
-	         .resourceIds("ph-resource");
+	         .resourceIds(RESOURCE_ID);
 	}
 }
